@@ -7,8 +7,9 @@ import {
   ListItemText,
   TextField,
   Typography,
+  Stack,
 } from '@mui/material';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const benefitsList = [
@@ -29,12 +30,21 @@ const benefitsList = [
 const NewsletterForm = () => {
   const [email, setEmail] = useState('');
 
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    // if (email !== '') {
+    //   console.log('submit success');
+    // } else {
+
+    // }
+  };
+
   return (
     <>
       <Box component='section'>
         <Typography
           variant='h1'
-          sx={{ fontSize: '2em', fontWeight: '700' }}
+          sx={{ fontSize: '3em', fontWeight: '700' }}
           pt={3}
           pb={2}
         >
@@ -59,18 +69,26 @@ const NewsletterForm = () => {
           ))}
         </List>
       </Box>
-      <Box component='section'>
-        <Box component='form'>
+      <Box component='section' mb={4}>
+        <Stack component='form' gap={2} onSubmit={handleSubmit}>
           <TextField
+            fullWidth
             label='Email address'
             name='email'
             placeholder='email@company.com'
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            InputLabelProps={{ shrink: false, sx: { position: 'static' } }}
           />
-          <Button type='submit'>Subscribe to monthly newsletter</Button>
-        </Box>
+          <Button
+            type='submit'
+            color='secondary'
+            variant='contained'
+            size='large'
+            fullWidth
+          >
+            Subscribe to monthly newsletter
+          </Button>
+        </Stack>
       </Box>
     </>
   );
