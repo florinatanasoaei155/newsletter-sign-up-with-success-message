@@ -9,8 +9,11 @@ import {
   Typography,
   Stack,
 } from '@mui/material';
-import { ChangeEvent, FormEvent, useState } from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useEffect } from 'react';
 
 const benefitsList = [
   {
@@ -27,33 +30,41 @@ const benefitsList = [
   },
 ];
 
-const EMAIL_MESSAGE_REQUIRED = 'Email is required';
+const schema = z.object({
+  email: z
+    .string()
+    .min(1, { message: 'Required' })
+    .email({ message: 'Must be a valid email' }),
+});
 
-const NewsletterForm = () => {
-  const [email, setEmail] = useState('');
-  const [isError, setIsError] = useState(false);
+interface NewsletterFormInput {
+  email: string;
+}
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+interface NewsletterFormProps {
+  onSubmitSuccess: () => void;
+}
 
-    if (email === '') {
-      setIsError(true);
-      return;
-    }
+const NewsletterForm = ({ onSubmitSuccess }: NewsletterFormProps) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitSuccessful },
+  } = useForm({
+    defaultValues: { email: '' },
+    resolver: zodResolver(schema),
+  });
 
-    setIsError(false);
+  const onSubmit = (data: NewsletterFormInput) => {
+    console.log(data);
+    onSubmitSuccess();
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-
-    if (event.target.value === '') {
-      setIsError(true);
-      return;
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      onSubmitSuccess();
     }
-
-    setIsError(false);
-  };
+  }, [isSubmitSuccessful, onSubmitSuccess]);
 
   return (
     <>
@@ -86,27 +97,34 @@ const NewsletterForm = () => {
         </List>
       </Box>
       <Box component='section' mb={4}>
-        <Stack component='form' gap={2} onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label='Email address'
+        <Stack component='form' gap={2} onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            control={control}
             name='email'
-            placeholder='email@company.com'
-            value={email}
-            onChange={handleChange}
-            error={isError}
-            helperText={isError && EMAIL_MESSAGE_REQUIRED}
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <TextField
+                  {...field}
+                  fullWidth
+                  label='Email address'
+                  name='email'
+                  placeholder='email@company.com'
+                  error={!!error}
+                  helperText={error?.message}
+                />
+                <Button
+                  type='submit'
+                  color='secondary'
+                  variant='contained'
+                  size='large'
+                  fullWidth
+                  disabled={!!error}
+                >
+                  Subscribe to monthly newsletter
+                </Button>
+              </>
+            )}
           />
-          <Button
-            type='submit'
-            color='secondary'
-            variant='contained'
-            size='large'
-            fullWidth
-            disabled={isError}
-          >
-            Subscribe to monthly newsletter
-          </Button>
         </Stack>
       </Box>
     </>
