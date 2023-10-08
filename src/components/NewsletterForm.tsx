@@ -1,3 +1,5 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   Box,
   Button,
@@ -5,15 +7,14 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Stack,
   TextField,
   Typography,
-  Stack,
 } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useForm, Controller } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import * as z from 'zod';
+import DesktopIlustration from '../assets/images/illustration-sign-up-mobile.svg';
 
 const benefitsList = [
   {
@@ -68,6 +69,7 @@ const NewsletterForm = ({ onSubmitSuccess }: NewsletterFormProps) => {
 
   return (
     <>
+      <img src={DesktopIlustration} alt='Illustration' width='100%' />
       <Box component='section'>
         <Typography
           variant='h1'

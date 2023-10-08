@@ -2,13 +2,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { useState } from 'react';
 import './App.css';
-import { ThemeProvider, CssBaseline, Container, Box } from '@mui/material';
-import theme from './theme';
-import DesktopIlustration from './assets/images/illustration-sign-up-mobile.svg';
 import NewsletterForm from './components/NewsletterForm';
 import SuccessMessage from './components/SuccessMessage';
-import { useState } from 'react';
+import theme from './theme';
 
 const App = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -23,7 +22,7 @@ const App = () => {
     }
 
     return (
-      <Box display='none'>
+      <Box>
         <SuccessMessage />
         <div className='attribution'>
           Challenge by{' '}
@@ -43,7 +42,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <img src={DesktopIlustration} alt='Illustration' width='100%' />
       <Container>{renderContent()}</Container>
     </ThemeProvider>
   );
