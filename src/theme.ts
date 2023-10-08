@@ -13,6 +13,14 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiTypography: {
+      variants: [
+        {
+          props: { variant: 'h1' },
+          style: { fontSize: '2em', fontWeight: 700 },
+        },
+      ],
+    },
     MuiTextField: {
       defaultProps: { InputLabelProps: { shrink: false } },
       styleOverrides: {

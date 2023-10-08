@@ -2,7 +2,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import './App.css';
 import NewsletterForm from './components/NewsletterForm';
@@ -16,33 +16,22 @@ const App = () => {
     setIsSubmitted(true);
   };
 
+  const handleDismiss = () => {
+    setIsSubmitted(false);
+  };
+
   const renderContent = () => {
     if (!isSubmitted) {
       return <NewsletterForm onSubmitSuccess={handleSubmitSuccess} />;
     }
 
-    return (
-      <Box>
-        <SuccessMessage />
-        <div className='attribution'>
-          Challenge by{' '}
-          <a href='https://www.frontendmentor.io?ref=challenge' target='_blank'>
-            Frontend Mentor
-          </a>
-          . Coded by{' '}
-          <a href='https://www.frontendmentor.io/profile/ericstradivarius'>
-            Florin Atanasoaei
-          </a>
-          .
-        </div>
-      </Box>
-    );
+    return <SuccessMessage onDismiss={handleDismiss} />;
   };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container>{renderContent()}</Container>
+      {renderContent()}
     </ThemeProvider>
   );
 };
