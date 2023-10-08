@@ -9,7 +9,7 @@ import {
   Typography,
   Stack,
 } from '@mui/material';
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const benefitsList = [
@@ -27,16 +27,32 @@ const benefitsList = [
   },
 ];
 
+const EMAIL_MESSAGE_REQUIRED = 'Email is required';
+
 const NewsletterForm = () => {
   const [email, setEmail] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    // if (email !== '') {
-    //   console.log('submit success');
-    // } else {
 
-    // }
+    if (email === '') {
+      setIsError(true);
+      return;
+    }
+
+    setIsError(false);
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+
+    if (event.target.value === '') {
+      setIsError(true);
+      return;
+    }
+
+    setIsError(false);
   };
 
   return (
@@ -77,7 +93,9 @@ const NewsletterForm = () => {
             name='email'
             placeholder='email@company.com'
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={handleChange}
+            error={isError}
+            helperText={isError && EMAIL_MESSAGE_REQUIRED}
           />
           <Button
             type='submit'
@@ -85,6 +103,7 @@ const NewsletterForm = () => {
             variant='contained'
             size='large'
             fullWidth
+            disabled={isError}
           >
             Subscribe to monthly newsletter
           </Button>

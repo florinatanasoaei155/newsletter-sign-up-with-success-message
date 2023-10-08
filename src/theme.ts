@@ -14,9 +14,7 @@ const theme = createTheme({
   },
   components: {
     MuiTextField: {
-      defaultProps: {
-        InputLabelProps: { shrink: false },
-      },
+      defaultProps: { InputLabelProps: { shrink: false } },
       styleOverrides: {
         root: {
           'label[data-shrink=false]+.MuiInputBase-formControl .MuiOutlinedInput-input::placeholder':
@@ -28,15 +26,11 @@ const theme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        notchedOutline: ({ theme }) => ({
-          borderRadius: theme.spacing(1),
-        }),
+        notchedOutline: ({ theme }) => ({ borderRadius: theme.spacing(1) }),
       },
     },
     MuiButton: {
-      defaultProps: {
-        disableElevation: true,
-      },
+      defaultProps: { disableElevation: true },
       variants: [
         {
           props: { size: 'large' },
@@ -61,6 +55,9 @@ const theme = createTheme({
           position: 'static',
         }),
       },
+    },
+    MuiFormHelperText: {
+      styleOverrides: { root: { marginLeft: 0, marginRight: 0 } },
     },
   },
 });
