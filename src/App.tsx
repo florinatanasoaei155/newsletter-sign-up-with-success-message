@@ -4,7 +4,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
-import './App.css';
 import NewsletterForm from './components/NewsletterForm';
 import SuccessMessage from './components/SuccessMessage';
 import theme from './theme';

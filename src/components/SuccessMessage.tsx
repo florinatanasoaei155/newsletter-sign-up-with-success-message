@@ -9,14 +9,16 @@ const SuccessMessage = ({ onDismiss }: SuccessMessageProps) => (
   <Container>
     <Box
       component='section'
-      pt={16}
+      pt={14}
       pb={4}
       sx={{ height: '100vh' }}
       display='flex'
       flexDirection='column'
     >
       <Box flex={1}>
-        <IconSuccess sx={{ fontSize: '64px' }} />
+        <Box pb={4}>
+          <IconSuccess sx={{ fontSize: '64px' }} />
+        </Box>
         <Typography variant='h1' pb={2} maxWidth='60%'>
           Thanks for subscribing!
         </Typography>

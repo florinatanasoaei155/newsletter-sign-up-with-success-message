@@ -6,8 +6,8 @@ const theme = createTheme({
       main: 'hsl(4, 100%, 67%)', // Tomato
     },
     secondary: {
-      main: 'hsl(234, 29%, 20%)', // Dark Slate Grey
-      dark: 'hsl(235, 18%, 26%)', // Charcoal Grey
+      dark: 'hsl(234, 29%, 20%)', // Dark Slate Grey
+      main: 'hsl(235, 18%, 26%)', // Charcoal Grey
       light: 'hsl(231, 7%, 60%)', // Grey
       contrastText: 'hsl(0, 0%, 100%)', // White
     },
@@ -34,6 +34,20 @@ const theme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
+        root: ({ theme }) => ({
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.text.primary,
+          },
+          '&.Mui-error': {
+            color: theme.palette.error.main,
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: theme.palette.error.main,
+              borderWidth: '1px',
+              backgroundColor: '#ef535059',
+              zIndex: '-1',
+            },
+          },
+        }),
         notchedOutline: ({ theme }) => ({ borderRadius: theme.spacing(1) }),
       },
     },
@@ -61,6 +75,11 @@ const theme = createTheme({
           fontWeight: 700,
           paddingBottom: theme.spacing(1),
           position: 'static',
+          '&.Mui-focused': {
+            color: theme.palette.text.primary,
+            borderWidth: '1px',
+          },
+          '&.Mui-error': { color: theme.palette.text.primary },
         }),
       },
     },
@@ -73,6 +92,8 @@ const theme = createTheme({
           top: 0,
           right: 0,
           marginTop: 0,
+          letterSpacing: 'initial',
+          fontWeight: 700,
         },
       },
     },

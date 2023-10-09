@@ -11,8 +11,8 @@ const IconSuccess = (props: SvgIconProps) => {
       >
         <defs>
           <linearGradient id='a' x1='100%' x2='0%' y1='0%' y2='100%'>
-            <stop offset='0%' stop-color='#FF6A3A' />
-            <stop offset='100%' stop-color='#FF527B' />
+            <stop offset='0%' stopColor='#FF6A3A' />
+            <stop offset='100%' stopColor='#FF527B' />
           </linearGradient>
         </defs>
         <g fill='none'>
