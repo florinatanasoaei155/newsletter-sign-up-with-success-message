@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   Box,
   Button,
@@ -15,6 +14,7 @@ import {
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
 import DesktopIlustration from '../assets/images/illustration-sign-up-mobile.svg';
+import IconList from './IconList';
 
 const benefitsList = [
   {
@@ -77,7 +77,7 @@ const NewsletterForm = ({ onSubmitSuccess }: NewsletterFormProps) => {
                     marginTop: theme.spacing(0.5),
                   })}
                 >
-                  <CheckCircleIcon color='primary' />
+                  <IconList />
                 </ListItemIcon>
                 <ListItemText>{label}</ListItemText>
               </ListItem>

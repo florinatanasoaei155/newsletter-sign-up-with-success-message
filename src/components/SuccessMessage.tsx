@@ -1,5 +1,5 @@
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Box, Typography, Container, Button } from '@mui/material';
+import IconSuccess from './IconSuccess';
 
 interface SuccessMessageProps {
   onDismiss: () => void;
@@ -16,9 +16,7 @@ const SuccessMessage = ({ onDismiss }: SuccessMessageProps) => (
       flexDirection='column'
     >
       <Box flex={1}>
-        <Box sx={{ fontSize: '64px' }}>
-          <CheckCircleIcon color='primary' fontSize='inherit' />
-        </Box>
+        <IconSuccess sx={{ fontSize: '64px' }} />
         <Typography variant='h1' pb={2} maxWidth='60%'>
           Thanks for subscribing!
         </Typography>
