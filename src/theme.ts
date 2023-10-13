@@ -17,7 +17,13 @@ const theme = createTheme({
       variants: [
         {
           props: { variant: 'h1' },
-          style: { fontSize: '2em', fontWeight: 700 },
+          style: ({ theme }) => ({
+            fontSize: '2em',
+            fontWeight: 700,
+            [theme.breakpoints.up('md')]: {
+              fontSize: '3em',
+            },
+          }),
         },
       ],
     },
@@ -44,7 +50,6 @@ const theme = createTheme({
               borderColor: theme.palette.error.main,
               borderWidth: '1px',
               backgroundColor: '#ef535059',
-              zIndex: '-1',
             },
           },
         }),

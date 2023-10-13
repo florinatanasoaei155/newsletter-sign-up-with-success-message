@@ -19,7 +19,7 @@ const IconSuccess = (props: SvgIconProps) => {
           <circle cx='32' cy='32' r='32' fill='url(#a)' />
           <path
             stroke='#FFF'
-            stroke-width='4'
+            strokeWidth='4'
             d='m18.286 34.686 8.334 7.98 19.094-18.285'
           />
         </g>

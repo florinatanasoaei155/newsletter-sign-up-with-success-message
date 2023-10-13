@@ -4,8 +4,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
-import NewsletterForm from './components/NewsletterForm';
-import SuccessMessage from './components/SuccessMessage';
+import SubscriptionForm from './components/SubscriptionForm';
+import SubscriptionSuccess from './components/SubscriptionSuccess';
 import theme from './theme';
 
 const App = () => {
@@ -21,10 +21,10 @@ const App = () => {
 
   const renderContent = () => {
     if (!isSubmitted) {
-      return <NewsletterForm onSubmitSuccess={handleSubmitSuccess} />;
+      return <SubscriptionForm onSubmitSuccess={handleSubmitSuccess} />;
     }
 
-    return <SuccessMessage onDismiss={handleDismiss} />;
+    return <SubscriptionSuccess onDismiss={handleDismiss} />;
   };
 
   return (

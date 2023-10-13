@@ -1,11 +1,11 @@
 import { Box, Typography, Container, Button } from '@mui/material';
-import IconSuccess from './IconSuccess';
+import SuccessIcon from './SuccessIcon';
 
-interface SuccessMessageProps {
+interface SubscriptionSuccessProps {
   onDismiss: () => void;
 }
 
-const SuccessMessage = ({ onDismiss }: SuccessMessageProps) => (
+const SubscriptionSuccess = ({ onDismiss }: SubscriptionSuccessProps) => (
   <Container>
     <Box
       component='section'
@@ -17,7 +17,7 @@ const SuccessMessage = ({ onDismiss }: SuccessMessageProps) => (
     >
       <Box flex={1}>
         <Box pb={4}>
-          <IconSuccess sx={{ fontSize: '64px' }} />
+          <SuccessIcon sx={{ fontSize: '64px' }} />
         </Box>
         <Typography variant='h1' pb={2} maxWidth='60%'>
           Thanks for subscribing!
@@ -45,4 +45,4 @@ const SuccessMessage = ({ onDismiss }: SuccessMessageProps) => (
   </Container>
 );
 
-export default SuccessMessage;
+export default SubscriptionSuccess;
