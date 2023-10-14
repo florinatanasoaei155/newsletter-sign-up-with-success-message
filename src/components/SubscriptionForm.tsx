@@ -129,7 +129,7 @@ const SubscriptionForm = ({ onSubmitSuccess }: SubscriptionFormProps) => {
                   ))}
                 </List>
               </Box>
-              <Box component='section' mb={4}>
+              <Box mb={4}>
                 <Stack
                   component='form'
                   gap={2}
@@ -142,7 +142,6 @@ const SubscriptionForm = ({ onSubmitSuccess }: SubscriptionFormProps) => {
                       <>
                         <TextField
                           {...field}
-                          aria-label='Email address'
                           fullWidth
                           label='Email address'
                           name='email'
