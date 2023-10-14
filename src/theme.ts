@@ -58,16 +58,16 @@ const theme = createTheme({
     },
     MuiButton: {
       defaultProps: { disableElevation: true },
-      variants: [
-        {
-          props: { size: 'large' },
-          style: { paddingTop: '15px', paddingBottom: '15px' },
-        },
-      ],
       styleOverrides: {
         root: ({ theme }) => ({
           borderRadius: theme.spacing(1),
           textTransform: 'initial',
+          paddingTop: '15px',
+          paddingBottom: '15px',
+          '&:hover': {
+            background:
+              'linear-gradient(to right, hsl(4, 100%, 67%), hsl(50, 100%, 67%))',
+          },
         }),
       },
     },
